@@ -1,6 +1,6 @@
 const Person = {
   name: "Choi",
-  adress: "Seoul",
+  address: "Seoul",
 };
 
 console.log(Person);
