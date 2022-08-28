@@ -63,3 +63,38 @@ console.log(circleProto1.getArea === circleProto2.getArea);
 ### 프로토타입
 
 > 객체간의 상속을 사용할때 프로토타입을 사용하며, 프로토타입은 어떤 객체의 상위 객체 역할을 하는 객체로써, 프로퍼티, 메소드를 제공한다.
+
+## 객체 생성 방법
+
+- 객체 리터럴 생성법
+
+```javascript
+const obj = { x: 1 };
+console.log(obj.constructor === Object);
+console.log(obj.hasOwnProperty("x"));
+```
+
+- Object생성자 함수의 생성된 객체
+
+```javascript
+const obj2 = new Object();
+obj2.x = 2;
+
+console.log(obj2.constructor === Object);
+console.log(obj2.hasOwnProperty("x"));
+```
+
+- 생성자 함수에 의해 생성된 객체
+
+```javascript
+// 3. 생성자 함수
+
+function Person(name) {
+  this.name = name;
+}
+
+const me = new Person("CHOI");
+
+console.log(me.constructor === Person);
+console.log(Person.prototype.constructor === Person);
+```
