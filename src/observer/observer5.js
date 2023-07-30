@@ -1,27 +1,28 @@
 const publisher = {
     subscribers: {
-        any: []// '이벤트 타입:구독자의 배열'의 형식
+        any: []
     },
     subscribe: function (fn, type) {
         type = type || 'any';
-        if (typeof this.subscribers[type] === 'undefined') {
+        if (typeof this.subscribers[type] === "undefined") {
             this.subscribers[type] = []
         }
+
         this.subscribers[type].push(fn)
     },
-    undescribe: function (fn, type) {
-        this.visitSubscribers('undescribe', fn, type)
+    unsubscribe: function (fn, type) {
+        this.visitSubscribers("unsubscribe", fn, type)
     },
     publish: function (publication, type) {
-        this.visitSubscribers('publish', publication, type)
+        this.visitSubscribers("publish", publication, type)
     },
     visitSubscribers: function (action, arg, type) {
-        var pubtype = type || 'any',
-            subscribers = this.subscribers[pubtype],
+        let pubType = type || 'any',
+            subscribers = this.subscribers[pubType],
             i,
             max = subscribers.length;
 
-        for (i = 0; i < max; i += 1) {
+        for (i = 0; i < max; i++) {
             if (action === 'publish') {
                 subscribers[i](arg);
             }
@@ -31,17 +32,17 @@ const publisher = {
                 }
             }
         }
-
     }
 }
 
 function makePublisher(o) {
-    var i;
+    let i;
     for (i in publisher) {
-        if (publisher.hasOwnProperty(i) && typeof publisher[i] === 'function') {
+        if (publisher.hasOwnProperty(i) && typeof publisher[i] === "function") {
             o[i] = publisher[i]
         }
     }
+
     o.subscribers = { any: [] }
 }
 
@@ -58,28 +59,16 @@ makePublisher(paper);
 
 const joe = {
     drinkCoffee: function (paper) {
-        console.log(paper + "를 읽었습니다.");
+        console.log(paper + " 를 읽었습니다.");
     },
     sundayPreNap: function (monthly) {
-        console.log("잠들기 전에" + monthly + "를 읽고 있습니다.");
+        console.log("잠들기 전에 " + monthly + "를 읽고 있습니다.");
     }
 }
 
 paper.subscribe(joe.drinkCoffee);
-paper.subscribe(joe.sundayPreNap)
+paper.subscribe(joe.sundayPreNap, "monthly");
+
 
 paper.daily();
-paper.daily();
-paper.daily();
-
-makePublisher(joe);
-joe.tweet = function (msg) {
-    this.publish(msg)
-}
-
-paper.readTweets = function (tweet) {
-    console.log("Call big metting! Someone  " + tweet);
-}
-
-joe.subscribe(paper.readTweets);
-joe.tweet("hated the paper today")
+paper.monthly();
