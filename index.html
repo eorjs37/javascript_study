@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <h1>버튼 이벤트</h1>
+    <button id="btn1">버튼1</button>
+    <script>
+        /*
+        * 이벤트 함수를 커링으로 만들고, element, 이벤트명, 이벤트 함수를 받는다
+        */
+        const btnEvent = ele => eventName => eventFn =>{
+            if(ele){
+                return ele.addEventListener(eventName,eventFn)
+            }
+            return null;
+        }
+
+        /**
+         * 함수 클릭 이벤트
+         */
+        const clickEvnet = ()=>{
+            alert("click event")
+        }
+
+        /**
+         * 마우스 진입 이벤트 
+         */
+        const mouseEnterEvent = ()=>{
+            alert("mouseEnter event")
+        }
+
+        /**
+         * 버튼 element를 받고 리턴
+         */
+        const ele = document.querySelector('#btn1');
+        const btnResult = btnEvent(ele);
+        console.log(btnResult);
+        
+        /**
+         * 함수명과 이벤트 함수를 연달아 입력
+         */
+        btnResult('click')(clickEvnet);
+        btnResult('mouseenter')(mouseEnterEvent);
+    </script>
+</body>
+</html>
