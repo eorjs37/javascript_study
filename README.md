@@ -6,3 +6,4 @@
 - [scope](https://github.com/eorjs37/javascript_study/tree/master/src/scope)
 - [Prototype Chaining](https://github.com/eorjs37/javascript_study/tree/master/src/scope)
 - [this](https://github.com/eorjs37/javascript_study/tree/master/src/this)
+- [객체생성패턴 - 네임스페이스 패턴](https://github.com/eorjs37/javascript_study/tree/master/src/namespace)
