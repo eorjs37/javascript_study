@@ -20,3 +20,29 @@ MYAPP.namespace = function (ns_string){
 
     return parent
 }
+
+MYAPP.namespace('MYAPP.utilities.array');
+
+MYAPP.utilities.array = (function(){
+    let name = "최대건";
+
+    const getName = function(){
+        return name;
+    }
+
+    const setName = function(name){
+        name = name;
+    }
+    return{
+        inArray:function(needle,haystack){
+
+        },
+        isArray:function(a){
+
+        },
+        setName,
+        getName
+    }
+}())
+
+console.log(MYAPP.utilities.array);
