@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <button class="count_btn">카운트</button>
+    <p class="count">0</p>
+    <script>
+        const btn = document.querySelector('.count_btn');
+        const countText=  document.querySelector('.count');
+
+        const increase = (function(){
+            let count = 0;
+
+            return function(){
+                return count++;
+            }
+        })();
+
+        btn.onclick = function(){
+            countText.textContent = increase();
+        }
+        
+        
+    </script>
+</body>
+</html>

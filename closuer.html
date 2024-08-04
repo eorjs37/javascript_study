@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <button class="toggle">toggle</button>
+    <div class="box" style="width: 100px; height: 100px; background: red;"></div>
+    <script>
+        const box = document.querySelector('.box');
+        const btn = document.querySelector('.toggle');
+
+        const toggle = (function(){
+            let isShow = false;
+
+            //클로저 반환
+            return function(){
+                box.style.display = isShow ? 'block' : 'none';
+                isShow = !isShow;
+            }
+
+        })();
+
+        btn.onclick = toggle;
+    </script>
+</body>
+</html>
